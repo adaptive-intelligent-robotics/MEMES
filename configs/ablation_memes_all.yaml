@@ -1,0 +1,48 @@
+hydra:
+    run:
+        dir: ./${alg_name}_results/${env_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+# Env config
+alg_name: all_memes
+seed: 0
+env_name: arm
+episode_length: 250
+policy_hidden_layer_sizes: [64, 64]
+# ME config
+num_evaluations: 0
+num_iterations: 2000
+batch_size: 65664
+num_samples: 1
+fixed_init_state: False
+discard_dead: False
+#Emitter config
+iso_sigma: 0.01
+line_sigma: 0.1
+crossover_percentage: 1.0
+# Grid config
+grid_shape: [50, 50]
+# Log config
+log_period: 400
+store_repertoire: True
+store_repertoire_log_period: 800
+
+# Stochasticity config
+num_reevals: 512
+log_period_reevals: 400
+
+# ES Parameters
+sample_number: 512 # Num samples for gradient estimate
+sample_sigma: 0.02
+sample_mirror: True # Use mirroring sampling
+sample_rank_norm: True # Use normalisation
+num_in_optimizer_steps: 1 # Num gradient step per generation
+adam_optimizer: True
+learning_rate: 0.01
+l2_coefficient: 0.0  # coefficient for regularisation
+novelty_nearest_neighbors: 10
+use_novelty_archive: False # if 1 use repertoire for novelty
+use_novelty_fifo: True # if 1 use fifo archive for novelty
+fifo_size: 50000 # size of the fifo buffer
+proportion_explore: 0.5 # if simultaneous, proportion of exploit-explore
+num_generations_stagnate: 32
+scan_batch_size: 128
+scan_novelty: 2048

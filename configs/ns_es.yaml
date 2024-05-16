@@ -1,0 +1,40 @@
+hydra:
+    run:
+        dir: ./${alg_name}_results/${env_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+# Env config
+alg_name: ns_es
+seed: 0
+env_name: arm
+episode_length: 250
+policy_hidden_layer_sizes: [64, 64]
+# ME config
+num_evaluations: 0
+num_iterations: 2000
+batch_size: 1 # must be 1 for VANILLA ES
+num_samples: 1
+fixed_init_state: False
+discard_dead: False
+# Grid config
+grid_shape: [50, 50]
+# Log config
+log_period: 200
+store_repertoire: True
+store_repertoire_log_period: 200
+
+# Stochasticity config
+num_reevals: 512
+log_period_reevals: 200
+
+# ES Parameters
+sample_number: 512
+sample_sigma: 0.02
+sample_mirror: True
+sample_rank_norm: True
+learning_rate: 0.01
+l2_coefficient: 0.0  # coefficient for regularisation
+novelty_nearest_neighbors: 10
+population_size: 5
+fitness_weight: 0.0 # 0.5 for nsr_es ; 1.0 for nsra_es
+adaptive_fitness_weight: False # True for nsra_es
+adaptive_generations_period: 50
+adaptive_amount: 0.05

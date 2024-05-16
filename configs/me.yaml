@@ -1,0 +1,30 @@
+hydra:
+    run:
+        dir: ./${alg_name}_results/${env_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+# Env config
+alg_name: me
+seed: 0
+env_name: arm
+episode_length: 250
+policy_hidden_layer_sizes: [64, 64]
+# ME config
+num_evaluations: 0
+num_iterations: 2000
+batch_size: 128
+num_samples: 1
+fixed_init_state: False
+discard_dead: False
+#Emitter config
+iso_sigma: 0.01
+line_sigma: 0.1
+crossover_percentage: 1.0
+# Grid config
+grid_shape: [50, 50]
+# Log config
+log_period: 200
+store_repertoire: True
+store_repertoire_log_period: 200
+
+# Stochasticity config
+num_reevals: 512
+log_period_reevals: 200
